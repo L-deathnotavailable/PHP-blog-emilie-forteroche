@@ -30,10 +30,14 @@ class ArticleController
         if (!$article) {
             throw new Exception("L'article demandé n'existe pas.");
         }
-
+        // Récupération des commentaires associés à l'article
         $commentManager = new CommentManager();
         $comments = $commentManager->getAllCommentsByArticleId($id);
 
+        // Incrémentation du compteur de vues de l'article
+        $articleManager->incrementArticleViews($id);
+
+        // Afficher l'article et les commentaires
         $view = new View($article->getTitle());
         $view->render("detailArticle", ['article' => $article, 'comments' => $comments]);
     }
