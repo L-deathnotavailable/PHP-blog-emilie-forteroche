@@ -399,3 +399,27 @@ footer {
 .arrow.down i {
     color: #d79922; /* Par défaut, couleur orange pour les flèches descendantes */
 }
+
+/**
+ * Partie Supression commentaire
+ */ 
+ .btn-delete-comment {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #e60000; 
+    color: white; 
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-delete-comment:hover {
+    background-color: #ff4d4d;
+}
+
+/* Changement du pointeur sur la zone article */
+.article {
+    cursor: pointer;
+}

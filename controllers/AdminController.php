@@ -198,4 +198,19 @@ class AdminController {
         // On redirige vers la page d'administration.
         Utils::redirect("admin");
     }
+    public function deleteComment() : void
+    {
+        $this->checkIfUserIsConnected();
+
+        // On supprime le commentaire.
+        $id = Utils::request("id", -1);
+        $commentManager = new CommentManager();
+        $comment = $commentManager->getCommentById($id);
+        if (null !== $comment) {
+            $commentManager->deleteComment($comment);
+        }
+        
+        // Redirection vers la page d'accueil après suppression du commentaire.
+        Utils::redirectToHome();
+    }
 }
