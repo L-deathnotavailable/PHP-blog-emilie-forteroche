@@ -73,6 +73,11 @@ class Utils {
         
         return $finalString;
     }
+    public static function redirectToHome()
+    {
+        header("Location: http://localhost/blog_emilie/index.php");
+        exit();
+    }
 
     /**
      * Cette méthode permet de récupérer une variable de la superglobale $_REQUEST.

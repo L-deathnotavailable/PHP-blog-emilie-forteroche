@@ -103,4 +103,43 @@ class ArticleManager extends AbstractEntityManager
         $sql = "DELETE FROM article WHERE id = :id";
         $this->db->query($sql, ['id' => $id]);
     }
+
+    /**
+     * Récupère tous les articles avec leur nombre de vues, de commentaires et la date de publication.
+     * @return array : un tableau d'objets Article avec stats.
+     */
+    public function getAllArticlesWithStats(string $sort = 'date_creation', string $dir = 'desc') : array 
+    {
+        // On vérifie que les paramètres sont valides pour éviter les injections SQL
+        $allowedSorts = ['title', 'count_views', 'comments_count', 'date_creation'];
+        $allowedDirs = ['asc', 'desc'];
+
+        if (!in_array($sort, $allowedSorts)) {
+            $sort = 'date_creation';
+        }
+        if (!in_array($dir, $allowedDirs)) {
+            $dir = 'desc';
+        }
+
+        $sql = "SELECT a.id, a.title, a.count_views, a.date_creation, COUNT(c.id) as comments_count
+                FROM article as a
+                LEFT JOIN comment c ON a.id = c.id_article
+                GROUP BY a.id
+                ORDER BY $sort $dir"; // On utilise ici les paramètres de tri validés
+
+        $result = $this->db->query($sql);
+        $articles = [];
+
+        while ($article = $result->fetch()) {
+            $articles[] = new Article($article);
+        }
+        return $articles;
+    }
+    public function getCountCommentsByArticleId(int $articleId) : int{
+        $sql = "SELECT COUNT(*) as count FROM comment WHERE id_article= :articleId;";
+        $result= $this->db->query($sql, ['articleId' => $articleId]);
+        $count= $result -> fetch ()['count'];
+        return $count;
+    }
+
 }

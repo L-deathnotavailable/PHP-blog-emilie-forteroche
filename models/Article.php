@@ -144,4 +144,7 @@
     {
         return $this->countViews;
     }
+    public function getCountComments() : int{
+        return (new ArticleManager())->getCountCommentsByArticleId($this->getId());
+    }
  }
