@@ -48,6 +48,28 @@ class AdminController {
     }
 
     /**
+     * Affiche la page de monitoring des articles.
+     * @return void
+     */
+    public function showMonitoringPage() : void
+    {
+        $sort = Utils::request('sort', 'date_creation'); // Récupère le paramètre 'sort' ou 'date_creation' par défaut
+        $dir = Utils::request('dir', 'desc'); // Récupère le paramètre 'dir' ou 'desc' par défaut
+        // On vérifie que l'utilisateur est connecté.
+        $this->checkIfUserIsConnected();
+
+        // On récupère les articles.
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->getAllArticlesWithStats($sort,$dir); 
+
+        // On affiche la page d'administration.
+        $view = new View("Monitoring des Articles");
+        $view->render("monitoring", [
+            'articles' => $articles
+        ]);
+    }
+
+    /**
      * Connexion de l'utilisateur.
      * @return void
      */

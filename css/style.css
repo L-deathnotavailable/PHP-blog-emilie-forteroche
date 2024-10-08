@@ -350,3 +350,52 @@ footer {
     color: white;
     background-color: var(--headerColor);
 }
+
+/**
+ * Partie Monitoring
+ */ 
+.adminMonitoring {
+    width: 100%;
+}
+
+.headerRow, .articleRow {
+    display: flex;
+    padding: 10px;
+    border: 1px solid white;
+}
+
+.headerRow {
+    font-weight: bold;
+    text-align: left;
+}
+
+.headerCell, .articleCell {
+    flex: 1; /* Distribue les colonnes également */
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.headerCell a, .articleCell a {
+    color: white;
+    text-decoration: none;
+}
+
+.articleRow:nth-child(even) {
+    background-color: #99a140; /* Couleur alternée pour les lignes paires */
+}
+
+.articleRow:nth-child(odd) {
+    background-color: #d79922; /* Couleur alternée pour les lignes impaires */
+}
+
+.arrow i {
+    margin-left: 5px;
+    font-size: 16px;
+    color: #99a140; /* Par défaut, couleur verte pour les flèches ascendantes */
+}
+
+.arrow.down i {
+    color: #d79922; /* Par défaut, couleur orange pour les flèches descendantes */
+}
