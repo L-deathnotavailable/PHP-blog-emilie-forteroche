@@ -73,6 +73,15 @@ class Utils {
         
         return $finalString;
     }
+    public static function redirectToHome()
+    {
+        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https" : "http";
+        $host = $_SERVER['HTTP_HOST'];
+        $uri = '/blog_emilie/index.php';
+        header("Location: $protocol://$host$uri");
+        exit();
+    }
+    
 
     /**
      * Cette méthode permet de récupérer une variable de la superglobale $_REQUEST.
