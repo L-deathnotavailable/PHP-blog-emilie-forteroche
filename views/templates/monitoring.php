@@ -1,7 +1,7 @@
 <h2>Monitoring des Articles</h2>
 
 <div class="adminMonitoring">
-    <div class="headerRow" style="background-color: #3f56a4; color: white;">
+    <div class="headerRow">
         <div class="headerCell">
             Titre 
             <a href="?action=adminMonitoring&sort=title&dir=asc" class="arrow up" id="title-asc">
@@ -41,7 +41,7 @@
     </div>
 
     <?php foreach ($articles as $index => $article) : ?>
-        <div class="articleRow" style="color: white; background-color: <?= $index % 2 == 0 ? '#99a140' : '#d79922'; ?>">
+        <div class="articleRow">
             <div class="articleCell"><?= htmlspecialchars($article->getTitle()) ?></div>
             <div class="articleCell"><?= htmlspecialchars($article->getCountViews()) ?></div>
             <div class="articleCell"><?= htmlspecialchars($article->getCountComments()) ?></div>
