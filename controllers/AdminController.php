@@ -210,7 +210,8 @@ class AdminController {
             $commentManager->deleteComment($comment);
         }
         
-        // Redirection vers la page d'accueil après suppression du commentaire.
-        Utils::redirectToHome();
+        // Redirection vers la page d'article sur laquelle on est après suppression du commentaire.
+        $id_article = Utils::request("id_article", -1);
+        Utils::redirect("showArticle",["id"=> $id_article]);
     }
 }
