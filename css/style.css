@@ -369,6 +369,26 @@ footer {
     text-align: left;
 }
 
+.articleRow {
+    color: white;
+    padding: 10px;
+}
+  
+/* Alternance de couleurs pour les lignes d'article */
+    .articleRow:nth-child(even) {
+    background-color: #99a140; /* Couleur pour les lignes paires */
+}
+
+.articleRow:nth-child(odd) {
+    background-color: #d79922; /* Couleur pour les lignes impaires */
+}
+
+/* Style pour la ligne d'en-tête */
+.headerRow {
+    background-color: #3f56a4;
+    color: white;
+    padding: 10px;
+}
 .headerCell, .articleCell {
     flex: 1; /* Distribue les colonnes également */
     padding: 10px;
